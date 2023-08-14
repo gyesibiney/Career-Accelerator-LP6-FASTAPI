@@ -40,7 +40,7 @@ async def predict_diabetes(
                 "pl": pl,
                 "pr": pr,
                 "sk": sk,
-                "ts": ts
+                "ts": ts,
                 "m11": m11,
                 "bd2": bd2,
                 "age": age
