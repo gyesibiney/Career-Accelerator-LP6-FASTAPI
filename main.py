@@ -56,4 +56,4 @@ async def predict_sepsis(
 
         return JSONResponse(content=response, media_type="application/json")
     except Exception as e:
-        raise HTTPException(status_code=500, detail="An error occurred while processing the request.")
+        raise HTTPException(status_code=500, detail=str(e))
