@@ -1,8 +1,8 @@
 from fastapi import FastAPI,Query
 from pydantic import BaseModel
+import joblib
 
 # instantiating the app
-
 app= FastAPI()
 
 class patient_item(BaseModel):
