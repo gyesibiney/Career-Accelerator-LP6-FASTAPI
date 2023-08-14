@@ -1,0 +1,5 @@
+fastapi[All]
+joblib
+uvicorn
+jinja2
+numpy
