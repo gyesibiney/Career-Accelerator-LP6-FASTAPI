@@ -11,7 +11,7 @@ xgb_model = joblib.load("xgb_model.joblib")
 
 @app.get("/")
 async def read_root():
-    return {"message": "Welcome to the FastAPI app"}
+    return {"message": "Welcome to my Sepsis-Prediction-APP-using-FastAPI"}
 
 
 @app.get("/predict/")
