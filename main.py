@@ -6,7 +6,7 @@ import joblib
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
-# Load the pickled XGBoost model
+# Load the XGBoost model
 xgb_model = joblib.load("xgb_model.joblib")
 
 @app.get("/")
@@ -40,7 +40,7 @@ async def predict_diabetes(
                 "pl": pl,
                 "pr": pr,
                 "sk": sk,
-                "ts": ts,
+                # "ts": ts
                 "m11": m11,
                 "bd2": bd2,
                 "age": age
@@ -59,6 +59,13 @@ async def predict_diabetes(
                 "prediction": response["prediction"]
             }
         )
-        print("Input Features:", input_features)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail="An error occurred while processing the request.")
+print("Input Features:", input_features)  # Move this line before the return statement
+
+return templates.TemplateResponse(
+    "display_params.html",
+    {
+        "request": request,
+        "input_features": response["request"],
+        "prediction": response["prediction"]
+    }
+)
