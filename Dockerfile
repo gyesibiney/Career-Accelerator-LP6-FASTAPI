@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY xgb_model.joblib .
 
 # Copy the FastAPI app code to the container
-COPY app.main .
+COPY main.py .
 
 # Expose the port the FastAPI app will run on
 EXPOSE 8000
