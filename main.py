@@ -43,7 +43,14 @@ async def predict_sepsis(request: Request):
         # Create a response dictionary
         response = {
             "request": {
-                # ... input values ...
+                "prg": prg,
+                "pl": pl,
+                "pr": pr,
+                "sk": sk,
+                "ts": ts,
+                "m11": m11,
+                "bd2": bd2,
+                "age": age
             },
             "prediction": {
                 "class_0_probability": prediction[0],
