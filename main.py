@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query, Request, HTTPException
+ from fastapi import FastAPI, Query, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import joblib
@@ -6,12 +6,13 @@ import joblib
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
-# Load the pickled XGBoost model
+# Load the XGBoost model
 xgb_model = joblib.load("xgb_model.joblib")
 
-@app.get("/app")
+@app.get("/")
 async def read_root():
-    return {"message": "Welcome to the Sepsis Prediction API using FastAPI"}
+    return {"message": "Welcome to my Sepsis-Prediction-APP using FastAPI"}
+
 
 @app.get("/predict/")
 async def predict_diabetes(
@@ -30,7 +31,7 @@ async def predict_diabetes(
         input_features = [prg, pl, pr, sk, ts, m11, bd2, age]
 
         # Make predictions using the loaded model
-        prediction = xgb_model.predict_proba([input_features])[0]
+        prediction = xgb_model.predict([input_features])[0]
 
         # Create a JSON response
         response = {
@@ -39,7 +40,7 @@ async def predict_diabetes(
                 "pl": pl,
                 "pr": pr,
                 "sk": sk,
-                "ts": ts,
+                # "ts": ts
                 "m11": m11,
                 "bd2": bd2,
                 "age": age
@@ -58,6 +59,7 @@ async def predict_diabetes(
                 "prediction": response["prediction"]
             }
         )
+        print("Input Features:", input_features)
     except Exception as e:
         raise HTTPException(status_code=500, detail="An error occurred while processing the request.")
 
