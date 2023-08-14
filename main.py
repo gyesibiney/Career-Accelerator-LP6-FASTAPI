@@ -31,7 +31,7 @@ async def predict_diabetes(
         input_features = [prg, pl, pr, sk, ts, m11, bd2, age]
 
         # Make predictions using the loaded model
-        prediction = xgb_model.predict_proba([input_features])[0]
+        prediction = xgb_model.predict([input_features])[0]
 
         # Create a JSON response
         response = {
