@@ -1,9 +1,9 @@
-from fastapi import fastAPI
+from fastapi import FastAPI
 from pydantic import BaseModel
 
 # instantiating the app
 
-app= fastAPI()
+app= FastAPI()
 
 class patient_item(BaseModel):
     prg: float = Query(..., description="Plasma glucose"),
