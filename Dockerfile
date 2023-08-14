@@ -13,7 +13,7 @@ COPY xgb_model.joblib .
 COPY main.py .
 
 # Expose the port the FastAPI app will run on
-EXPOSE 8000
+EXPOSE 7860
 
 # The CMD instruction specifies the command to run when the container starts
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
