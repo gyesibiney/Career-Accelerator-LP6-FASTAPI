@@ -59,5 +59,6 @@ async def predict_diabetes(
                 "prediction": response["prediction"]
             }
         )
+        print("Input Features:", input_features)
     except Exception as e:
         raise HTTPException(status_code=500, detail="An error occurred while processing the request.")
