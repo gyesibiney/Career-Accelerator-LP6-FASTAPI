@@ -15,8 +15,5 @@ COPY main.py .
 # Expose the port the FastAPI app will run on
 EXPOSE 8000
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
-
-docker build -t my-fastapi-app .
-
-docker run -p 8000:8000 my-fastapi-app
+# The CMD instruction specifies the command to run when the container starts
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
