@@ -7,7 +7,7 @@ COPY ./requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # Copy the model to the container
-COPY xgb.model.joblib .
+COPY xgb_model.joblib .
 
 # Copy the FastAPI app code to the container
 COPY app.main .
