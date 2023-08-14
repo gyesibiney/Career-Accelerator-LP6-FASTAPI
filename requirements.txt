@@ -3,3 +3,4 @@ joblib
 uvicorn
 jinja2
 numpy
+pydantic
