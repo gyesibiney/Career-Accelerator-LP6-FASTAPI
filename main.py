@@ -40,7 +40,6 @@ async def predict_sepsis(
 
         # Create a JSON response
         response = {
-            "request": {
                 "request": {
                 "prg": prg,
                 "pl": pl,
