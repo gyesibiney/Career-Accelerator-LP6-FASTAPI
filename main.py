@@ -1,6 +1,5 @@
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Query, HTTPException
 from fastapi.responses import JSONResponse
-import json
 import joblib
 
 app = FastAPI()
@@ -12,22 +11,18 @@ xgb_model = joblib.load("xgb_model.joblib")
 async def read_root():
     return {"message": "Welcome to my Sepsis-Prediction-APP-using-FastAPI"}
 
-@app.post("/predict/")
-async def predict_sepsis(request: Request):
+@app.get("/predict/")
+async def predict_sepsis(
+    prg: float = Query(..., description="Plasma glucose"),
+    pl: float = Query(..., description="Blood Work Result-1 (mu U/ml)"),
+    pr: float = Query(..., description="Blood Pressure (mm Hg)"),
+    sk: float = Query(..., description="Blood Work Result-2 (mm)"),
+    ts: float = Query(..., description="Blood Work Result-3 (mu U/ml)"),
+    m11: float = Query(..., description="Body mass index (weight in kg/(height in m)^2"),
+    bd2: float = Query(..., description="Blood Work Result-4 (mu U/ml)"),
+    age: int = Query(..., description="Patient's age (years)")
+):
     try:
-        # Get request JSON body
-        request_data = await request.json()
-
-        # Extract input features from request body
-        prg = request_data.get("prg")
-        pl = request_data.get("pl")
-        pr = request_data.get("pr")
-        sk = request_data.get("sk")
-        ts = request_data.get("ts")
-        m11 = request_data.get("m11")
-        bd2 = request_data.get("bd2")
-        age = request_data.get("age")
-
         # Prepare input features for prediction
         input_features = [prg, pl, pr, sk, ts, m11, bd2, age]
 
@@ -61,4 +56,4 @@ async def predict_sepsis(request: Request):
 
         return JSONResponse(content=response, media_type="application/json")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail="An error occurred while processing the request.")
