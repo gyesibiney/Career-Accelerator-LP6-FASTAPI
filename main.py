@@ -11,11 +11,10 @@ xgb_model = joblib.load("xgb_model.joblib")
 
 @app.get("/")
 async def read_root():
-    return {"message": "Welcome to my Sepsis-Prediction-APP using FastAPI"}
-
+    return {"message": "Welcome to my Sepsis-Prediction-APP-using-FastAPI"}
 
 @app.get("/predict/")
-async def predict_diabetes(
+async def predict_sepsis(
     request: Request,
     prg: float = Query(..., description="Plasma glucose"),
     pl: float = Query(..., description="Blood Work Result-1 (mu U/ml)"),
@@ -32,7 +31,7 @@ async def predict_diabetes(
 
         # Make predictions using the loaded model
         prediction = xgb_model.predict([input_features])[0]
-        
+
         # Determine the prediction outcome and create a response message
         if prediction == 0:
             prediction_message = "Patient has no sepsis"
@@ -42,6 +41,7 @@ async def predict_diabetes(
         # Create a JSON response
         response = {
             "request": {
+                "request": {
                 "prg": prg,
                 "pl": pl,
                 "pr": pr,
@@ -51,15 +51,12 @@ async def predict_diabetes(
                 "bd2": bd2,
                 "age": age
             },
-
-             "prediction": {
+            "prediction": {
                 "class_0_probability": prediction[0],
                 "class_1_probability": prediction[1],
                 "prediction_message": prediction_message  # Add prediction message to response
             }
         }
-            
-        
 
         return templates.TemplateResponse(
             "display_params.html",
@@ -69,7 +66,5 @@ async def predict_diabetes(
                 "prediction": response["prediction"]
             }
         )
-        print("Input Features:", input_features)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
