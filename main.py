@@ -68,4 +68,4 @@ async def predict_diabetes(
         "input_features": response["request"],
         "prediction": response["prediction"]
             }
-                )
+                
