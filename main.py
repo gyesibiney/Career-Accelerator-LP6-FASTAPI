@@ -4,7 +4,6 @@ from fastapi.templating import Jinja2Templates
 import joblib
 
 app = FastAPI()
-@app.post("/inference")
 templates = Jinja2Templates(directory="templates")
 
 # Load the pickled XGBoost model
