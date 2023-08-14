@@ -32,6 +32,12 @@ async def predict_diabetes(
 
         # Make predictions using the loaded model
         prediction = xgb_model.predict([input_features])[0]
+        
+        # Determine the prediction outcome and create a response message
+        if prediction == 0:
+            prediction_message = "Patient has no sepsis"
+        else:
+            prediction_message = "Patient has sepsis"
 
         # Create a JSON response
         response = {
@@ -45,11 +51,15 @@ async def predict_diabetes(
                 "bd2": bd2,
                 "age": age
             },
-            "prediction": {
+
+             "prediction": {
                 "class_0_probability": prediction[0],
-                "class_1_probability": prediction[1]
+                "class_1_probability": prediction[1],
+                "prediction_message": prediction_message  # Add prediction message to response
             }
         }
+            
+        
 
         return templates.TemplateResponse(
             "display_params.html",
