@@ -59,11 +59,11 @@ async def predict_diabetes(
                 "prediction": response["prediction"]
             }
         )
-print("Input Features:", input_features)  # Move this line before the return statement
+        print("Input Features:", input_features)  # Move this line before the return statement
 
-return templates.TemplateResponse(
-    "display_params.html",
-    {
+        return templates.TemplateResponse(
+        "display_params.html",
+        {
         "request": request,
         "input_features": response["request"],
         "prediction": response["prediction"]
