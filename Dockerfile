@@ -7,7 +7,7 @@ COPY ./requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # Copy the model to the container
-COPY model.json .
+COPY pipeline_with_xgboost.pkl .
 
 # Copy the FastAPI app code to the container
 COPY main.py .
