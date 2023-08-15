@@ -5,7 +5,7 @@ import joblib
 app = FastAPI()
 
 # Load the XGBoost model
-model = joblib.load("model_2.joblib")
+model = joblib.load("model.json")
 
 @app.get("/")
 async def read_root():
