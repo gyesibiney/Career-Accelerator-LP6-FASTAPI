@@ -5,7 +5,7 @@ import joblib
 app = FastAPI()
 
 # Load the XGBoost model
-xgb_model = joblib.load("xgb_model.joblib")
+model = joblib.load("model.joblib")
 
 @app.get("/")
 async def read_root():
@@ -27,7 +27,7 @@ async def predict_sepsis(
         input_features = [prg, pl, pr, sk, ts, m11, bd2, age]
 
         # Make predictions using the loaded model
-        prediction = xgb_model.predict([input_features])[0]
+        prediction = model.predict([input_features])[0]
 
         # Determine the prediction outcome message
         if prediction == 0:
