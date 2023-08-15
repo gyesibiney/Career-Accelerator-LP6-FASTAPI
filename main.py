@@ -29,6 +29,10 @@ async def predict_sepsis(
         # Make predictions using the loaded model
         prediction = model.predict([input_features])[0]
 
+        # Calculate class probabilities
+        class_1_probability = prediction
+        class_0_probability = 1 - class_1_probability
+       
         # Determine the prediction outcome message
         if prediction == 0:
             prediction_message = "Patient has no sepsis"
