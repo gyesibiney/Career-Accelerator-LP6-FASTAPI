@@ -7,3 +7,4 @@ pydantic
 XGBoost
 imblearn
 pandas
+scikit-learn==1.1.1
