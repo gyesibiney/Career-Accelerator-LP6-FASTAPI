@@ -5,7 +5,7 @@ import joblib
 app = FastAPI()
 
 # Load the XGBoost model
-model = joblib.load("model.json")
+model = joblib.load("pipeline_with_xgboost.pkl")
 
 @app.get("/")
 async def read_root():
