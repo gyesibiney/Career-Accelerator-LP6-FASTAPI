@@ -26,6 +26,9 @@ async def predict_sepsis(
         # Prepare input features for prediction
         input_features = [prg, pl, pr, sk, ts, m11, bd2, age]
 
+        # Convert float values to strings
+        input_features = [str(value) for value in input_features]
+
         # Make predictions using the loaded model
         prediction = model.predict([input_features])[0]
 
@@ -61,4 +64,3 @@ async def predict_sepsis(
         return JSONResponse(content=response, media_type="application/json")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
