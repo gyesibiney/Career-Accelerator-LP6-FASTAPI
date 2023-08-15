@@ -52,8 +52,8 @@ async def predict_sepsis(
                 "age": age
             },
             "prediction": {
-                "class_0_probability": prediction[0],
-                "class_1_probability": prediction[1],
+                "class_0_probability": class_0_probability,
+                "class_1_probability": class_1_probability,
                 "prediction_message": prediction_message
             }
         }
@@ -61,3 +61,4 @@ async def predict_sepsis(
         return JSONResponse(content=response, media_type="application/json")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
