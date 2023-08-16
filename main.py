@@ -5,7 +5,7 @@ import joblib
 app = FastAPI()
 
 # Load the XGBoost model
-model = joblib.load("Ada.joblib")
+model = joblib.load("RFC.joblib")
 
 @app.get("/")
 async def read_root():
