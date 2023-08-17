@@ -5,7 +5,7 @@ import joblib
 app = FastAPI()
 
 # Load the sepsis prediction model
-model = joblib.load('XGB.joblib')
+model = joblib.load('RFC.joblib')
 
 @app.get("/")
 async def read_root():
