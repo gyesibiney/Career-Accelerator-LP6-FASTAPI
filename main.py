@@ -5,7 +5,7 @@ import joblib
 app = FastAPI()
 
 # Load the sepsis prediction model
-model = joblib.load('RFC.joblib')
+model = joblib.load('XGB.joblib')
 
 @app.get("/")
 async def read_root():
@@ -48,4 +48,4 @@ async def predict_sepsis(
 # Run the app using Uvicorn
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=7860)
