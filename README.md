@@ -5,7 +5,7 @@
 
 |  | Project's Name | Article Link    | Deployment Link  |
 |:--:|:--------------:|:--------------:|:--------------:|
-| 1 |  -Embedding a Machine Learning Model into a Web Application             |  (https://medium.com/@david.biney/sepsis-prediction-app-using-fastapi-c89f37a7862f) | ([https://huggingface.co/spaces/gyesibiney/Sentiment-Analysis-Gradio-APP1](https://gyesibiney-sepsis-prediction-app-v1.hf.space/docs#/default/predict_sepsis_predict__get) |
+| 1 |  -Embedding a Machine Learning Model into a Web Application             |  (https://medium.com/@david.biney/sepsis-prediction-app-using-fastapi-c89f37a7862f) | ([https://huggingface.co/spaces/gyesibiney/Sentiment-Analysis-Gradio-APP1](https://gyesibiney-sepsis-prediction-app-v1.hf.space/docs#/default/predict_sepsis_predict__get)) |
 
 
 # Sepsis Prediction APP using FASTAPI ✨
